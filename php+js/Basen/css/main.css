@@ -1,0 +1,209 @@
+body {
+	font-family: 'Roboto Slab', sans-serif;
+	margin: 0px;
+	background-color: #f0f8ff;
+}
+
+.container {
+	width: 100vw;
+	min-height: 100%;
+	position: absolute;
+
+}
+
+.clearfix::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+/* ------------------------ Górny Pasek ------------------------ */
+
+.header {
+	position: relative;
+	width: 100vw;
+	height: 5%vw;
+	background-color: #2581d8;
+}
+
+/* ------------------------ Górny menu ------------------------- */
+
+.top-nav {
+	margin: auto;
+	max-width: 800px;
+	text-align: left;
+}
+
+.top-nav>ul {
+	font-weight: 500;
+	display: inline-block;
+	list-style-type: none;
+}
+
+.top-nav>ul a {
+	color: #ffffff;
+	text-decoration: none;
+	display: block;
+}
+
+.top-nav>ul>li {
+	float: left;
+	margin-right: 20px;
+}
+
+
+/* ------------------------ Górny menu ------------------------- */
+
+/* ------------------------ Główny menu ------------------------ */
+
+.main-nav {
+	background-color: white;
+	text-align: center;
+	box-shadow: 0px 5px 10px -2px;
+	padding: 10px 0px 5px;
+}
+
+#main-logo {
+	width: 75px;
+	height: 75px;
+}
+
+.main-nav>ul {
+	padding: 0;
+	margin: 0;
+	font-size: 24px;
+	display: inline-block;
+	line-height: 0px;
+	list-style-type: none;
+}
+
+.main-nav>ul a {
+	color: black;
+	text-decoration: none;
+	display: block;
+	transition: color .5s ease-out, font-size .5s ease-out;
+}
+
+.main-nav>ul a:hover {
+	color: #5285f7;
+	font-size: 26px;
+}
+
+
+.main-nav>ul>li {
+	float: left;
+	width: 150px;
+	height: 40px;
+}
+
+/* ------------------------ Główny menu ------------------------ */
+
+
+
+/* ------------------------ Górny Pasek ------------------------ */
+
+
+
+/* ------------------------ Środkowy Pasek --------------------- */
+
+/* .content {
+	padding: 10px 40px 60px 20px;
+} */
+
+
+.inner-content {
+	width: 90%;
+	margin: 20px auto;
+
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 2px 4px 7px 0px;
+
+}
+
+
+.content {
+	width: 100vw;
+	height: 50vw;
+
+}
+
+.content .item {
+	height: 20vw;
+	width: 45vw;
+	max-height: 20vw;
+	max-width: 45vw;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	border-radius: 10px;
+	transition: 1s;
+	margin: 20px;
+	float: left;
+	box-shadow: 0px 5px 10px -2px;
+}
+
+.content .item:hover {
+	background-size: 120%;
+	height: 20vw;
+	width: 45vw;
+	/* overflow: hidden; */
+}
+
+.content .item:nth-of-type(1) {
+	background-image: url(../img/masaz.jpg);
+}
+
+.content .item:nth-of-type(2) {
+	background-image: url(../img/basen1.jpg);
+}
+
+.content .item:nth-of-type(3) {
+	background-image: url(../img/silownia.jpg);
+}
+
+.content .item:nth-of-type(4) {
+	background-image: url(../img/sauna.jpg);
+}
+
+.content .item p {
+	color: #fff;
+	text-align: center;
+	line-height: 20vw;
+	text-shadow: 0 0 20px black;
+	background-color: rgba(0, 0, 0, .2);
+
+	font-size: 25px;
+	padding: 0;
+	opacity: 0;
+	transition: 1s;
+	cursor: default;
+	margin-block-start: 0;
+	margin-block-end: 0;
+}
+
+.content .item:hover p {
+	opacity: 1;
+
+
+}
+
+
+
+/* ------------------------ Środkowy Pasek --------------------- */
+
+
+
+/* ------------------------ Dolny Pasek ------------------------ */
+
+.footer {
+	height: 50px;
+	width: 100%;
+	background-color: gray;
+	text-align: center;
+	position: relative;
+	bottom: 0px;
+
+}
+
+/* ------------------------ Dolny Pasek ------------------------ */

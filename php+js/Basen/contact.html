@@ -1,0 +1,90 @@
+<?php
+session_start();
+if(isset($_GET['logout'])){
+	session_destroy();
+	header('Location: index.php');
+	exit(0);
+}
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kwa Kwa</title>
+
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="top-nav">
+                <ul>
+                    <?php 
+					if(!isset($_SESSION['logged_ID'])){
+						echo'<li><a href="login.php">Zaloguj</a></li>';
+						echo'<li><a href="zarejestruj.php">Zarejestruj</a></li>';
+					}
+					else
+					{
+						echo'<li><a href="konto.php">Profil</a></li>';
+						echo'<li><a href="index.php?logout">Wyloguj</a></li>';
+					}?>
+                </ul>
+            </div>
+            <nav class="main-nav">
+                <img id="main-logo" src="img/main-logo.jpg">
+                <ul>
+                    <li><a href="index.php">Start</a></li>
+                    <li><a href="news.php"> Aktualności</a></li>
+                    <li><a href="price.php"> Cennik</a></li>
+                    <li><a href="contact.php"> Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="content">
+            <h1>Skontaktuj się z nami</h1>
+            <div class="wrap">
+                <form>
+                    <input type="text " placeholder="Twoje imie">
+                    <input type="text" placeholder="email">
+                    <textarea placeholder="Twoja wiadomość"></textarea>
+                    <button>wyślij wiadomość</button>
+
+
+                </form>
+                <div class="socials">
+                    <div class="social clearfix"><img src="img/contact1.png" alt="kontakt">
+                        <span>kwa-kwa@wp.pl</span></div>
+
+                    <div class="social clearfix"><img src="img/contact2.png" alt="kontakt">
+                        <span>775968765858</span></div>
+
+                    <div class="social clearfix"><img src="img/contact3.png" alt="kontakt">
+                        <span>KwaKwa</span></div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+        </div>
+
+        <div class="footer">
+            <p>wszelkie prawa zastrzeżone</p>
+        </div>
+    </div>
+</body>
+
+</html>

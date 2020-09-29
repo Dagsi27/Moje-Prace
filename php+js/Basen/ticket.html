@@ -1,0 +1,215 @@
+<?php
+session_start();
+if(!isset($_SESSION['logged_ID']))
+{
+	header('Location: index.php');
+	exit(0);
+}
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Kwa Kwa</title>
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/user.css">
+	<link rel="stylesheet" href="css/shop.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<div class="header">
+			<div class="top-nav">
+				<ul>
+					<?php 
+					if(!isset($_SESSION['logged_ID'])){
+						echo'<li><a href="login.php">Zaloguj</a></li>';
+						echo'<li><a href="zarejestruj.php">Zarejestruj</a></li>';
+					}
+					else
+					{
+						echo'<li><a href="konto.php">Profil</a></li>';
+						echo'<li><a href="index.php?logout">Wyloguj</a></li>';
+					}?>
+				</ul>
+			</div>
+			<nav class="main-nav">
+				<img id="main-logo" src="img/main-logo.jpg">
+				<ul>
+					<li><a href="index.php">Start</a></li>
+					<li><a href="news.php"> Aktualności</a></li>
+					<li><a href="price.php"> Cennik</a></li>
+					<li><a href="contact.php"> Kontakt</a></li>
+				</ul>
+			</nav>
+		</div>
+
+		<div class="content">
+			<div class="inner-content">
+
+				<div class="inner-menu">
+					<div class="head">
+						<h1>Menu</h1>
+					</div>
+					<div class="content-menu">
+						<ul>
+							<li><a href="konto.php">Profil</a></li>
+							<li><a href="">Ustawienia Konta</a></li>
+							<li><a href="basket.php">Koszyk</a></li>
+							<li><a href="index.php?logout">Wyloguj</a></li>
+						</ul>
+						<img id="main-logo" src="img/main-logo.jpg">
+					</div>
+				</div>
+
+				<div class="inner-user">
+					<div class="head">
+						<h1>Bilet</h1>
+					</div>
+					<div class="content-user">
+						<form name="user-add" id="user-add">
+							<table id="add-information">
+								<tr>
+									<th>Rodzaj</th>
+									<th>czas</th>
+									<th>Ile</th>
+									<th>Ulga</th>
+									<th>Na kiedy</th>
+									<th>-</th>
+								</tr>
+								<tr id="basen">
+									<td>Bilet:</td>
+									<td><input type="number" name="time" value="1" min="1" max="5"> h</td>
+									<td><input type="number" name="quantity" value="1" min="1" max="99"></td>
+									<td>
+										<select name="type">
+											<option value="Brak">Brak</option>
+											<option value="Studencki (50%)">Studencki (50%)</option>
+											<option value="Ucznia (50%)">Ucznia (50%)</option>
+											<option value="Emerytów (50%)">Emerytów (50%)</option>
+										</select>
+									</td>
+									<td>
+										<input type="date" name="date">
+									</td>
+									<td><button type="button" name="add" id="add">Dodaj</button></td>
+								</tr>
+								<tr id="sauna">
+									<td>Sauna:</td>
+									<td><input type="number" name="time" value="1" min="1" max="5"> h</td>
+									<td><input type="number" name="quantity" value="1" min="1" max="99"></td>
+									<td>
+										<select name="type">
+											<option value="Brak">Brak</option>
+											<option value="Studencki (50%)">Studencki (50%)</option>
+											<option value="Ucznia (50%)">Ucznia (50%)</option>
+											<option value="Emerytów (50%)">Emerytów (50%)</option>
+										</select>
+									</td>
+									<td>
+										<input type="date" name="date">
+									</td>
+									<td><button type="button" name="add" id="add">Dodaj</button></td>
+								</tr>
+								<tr id="silownia">
+									<td>Silownia:</td>
+									<td><input type="number" name="time" value="1" min="1" max="5"> h</td>
+									<td><input type="number" name="quantity" value="1" min="1" max="99"></td>
+									<td>
+										<select name="type">
+											<option value="Brak">Brak</option>
+											<option value="Studencki (50%)">Studencki (50%)</option>
+											<option value="Ucznia (50%)">Ucznia (50%)</option>
+											<option value="Emerytów (50%)">Emerytów (50%)</option>
+										</select>
+									</td>
+									<td>
+										<input type="date" name="date">
+									</td>
+									<td><button type="button" name="add" id="add">Dodaj</button></td>
+								</tr>
+							</table>
+
+							<div class="dynamic-background">
+								<table id="dynamic_field"></table>
+							</div>
+							<input type="button" name="submit" id="submit" value="Submit" />
+
+
+							<p id="cena">Suma: 0</p>
+						</form>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="footer">
+			<p>wszelkie prawa zastrzeżone</p>
+		</div>
+	</div>
+</body>
+
+</html>
+
+<script>
+	$(document).ready(function () {
+
+		var i = 1;
+		var ulga;
+		var ile;
+		var cena;
+		var suma = 0;
+		$('#basen #add').click(function () {
+			i++;
+			ulga = $("#basen select").val();
+			ile = $("#basen input").val();
+			if (ulga == "Brak")
+				cena = 20 * ile;
+			else
+				cena = 10 * ile;
+			suma += cena;
+			$('#dynamic_field').append('<tr id="row' + i + '"><td>Bilet:' + ile + ' Ulga: ' + ulga +
+				' Cena: ' + cena + ' zl</td><td><button type="button" name="remove" id="' + i +
+				'" class="btn btn-danger btn_remove">X</button></td></tr>');
+			$("p").text("Suma: " + suma);
+		});
+		$('#sauna #add').click(function () {
+			i++;
+			ulga = $("#sauna select").val();
+			ile = $("#sauna input").val();
+			if (ulga == "Brak")
+				cena = 12 * ile;
+			else
+				cena = 6 * ile;
+			suma += cena;
+			$('#dynamic_field').append('<tr id="row' + i + '"><td>Sauna:' + ile + ' Ulga: ' + ulga +
+				' Cena: ' + cena + ' zl</td><td><button type="button" name="remove" id="' + i +
+				'" class="btn btn-danger btn_remove">X</button></td></tr>');
+			$("p").text("Suma: " + suma);
+		});
+
+		$(document).on('click', '.btn_remove', function () {
+			var button_id = $(this).attr("id");
+			$('#row' + button_id + '').remove();
+		});
+
+		$('#submit').click(function () {
+			$.ajax({
+				url: "name.php",
+				method: "POST",
+				data: $('#add_name').serialize(),
+				success: function (data) {
+					alert(data);
+					$('#add_name')[0].reset();
+				}
+			});
+		});
+
+	});
+</script>

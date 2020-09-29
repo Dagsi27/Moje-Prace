@@ -1,0 +1,73 @@
+<?php
+	session_start();
+	require_once 'database.php';
+	
+	function check($error)
+	{
+		for($i=0;$i<4;$i++)
+			if(strlen($error[$i])!=0)
+				return false;
+		return true;
+	}
+
+	$message=['Podaj poprawny adres e-mail! ','Ten Adres e-mail jest już zajęty','Hasło musi mieć co najmniej 8 znaków!  ','Podane hasła nie są identyczne!','Potwierdź, że nie jesteś botem!'];
+	$error=[];
+	
+	$email=filter_input(INPUT_POST,'login',FILTER_VALIDATE_EMAIL);
+	$pass=filter_input(INPUT_POST,'pass');
+	$pass2=filter_input(INPUT_POST,'pass2');
+	
+	if(empty($email))
+		array_push($error,$message[0]);
+	else
+	{
+		$userQuery=$db->prepare('SELECT Konto_ID FROM konto where Login=:login');
+		$userQuery->bindValue(':login',$email,PDO::PARAM_STR);
+		$userQuery->execute();
+		
+		$user = $userQuery->fetch();
+		
+		if($user)
+			array_push($error,$message[1]);
+		else array_push($error,'');
+	}
+	
+	if(strlen($pass)<8)
+		array_push($error,$message[2]);
+	else array_push($error,'');
+	
+	if($pass!=$pass2)
+		array_push($error,$message[3]);
+	else array_push($error,'');
+	
+	$key="6LfUxMoUAAAAAFVWUdRW3VH2Mj_SMYyoOny9Bsup";
+	
+	$check_key=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$key."&response=".$_POST['g-recaptcha-response']);
+	
+	$response = json_decode($check_key);
+	
+	if($response->success==false)
+		array_push($error,$message[4]);
+	else array_push($error,'');
+		
+	
+	
+	if(!check($error)){
+		$_SESSION['error']=$error;		
+		header('Location: zarejestruj.php');
+		exit(0);
+	}
+	else
+	{
+		$password=password_hash($pass,PASSWORD_DEFAULT);
+		
+		$query=$db->prepare("INSERT INTO konto(Konto_ID, Karta_ID, Login, Haslo, Typ) VALUES (null,0,:login,:haslo,'U')");
+		$query->bindValue(':login', $email, PDO::PARAM_STR);
+		$query->bindValue(':haslo', $password, PDO::PARAM_STR);
+		$query->execute();	
+		
+		header('Location: index.php');
+		exit(0);
+	}
+	
+?>

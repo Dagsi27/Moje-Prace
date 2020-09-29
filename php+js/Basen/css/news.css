@@ -1,0 +1,14 @@
+h1 {
+	text-align: center;
+	font-size: 24px;
+}
+
+.content {
+	width: 100vw;
+	padding: 0;
+}
+
+.content .inner-content {
+	padding: 15px;
+
+}

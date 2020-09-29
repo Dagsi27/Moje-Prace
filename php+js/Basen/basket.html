@@ -1,0 +1,93 @@
+<?php
+session_start();
+if(!isset($_SESSION['logged_ID']))
+{
+	header('Location: index.php');
+	exit(0);
+}
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Kwa Kwa</title>
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/user.css">
+	<link rel="stylesheet" href="css/basket.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<div class="container">
+		<div class="header">
+			<div class="top-nav">
+				<ul>
+					<?php 
+					if(!isset($_SESSION['logged_ID'])){
+						echo'<li><a href="login.php">Zaloguj</a></li>';
+						echo'<li><a href="zarejestruj.php">Zarejestruj</a></li>';
+					}
+					else
+					{
+						echo'<li><a href="konto.php">Profil</a></li>';
+						echo'<li><a href="index.php?logout">Wyloguj</a></li>';
+					}?>
+				</ul>
+			</div>
+			<nav class="main-nav">
+				<img id="main-logo" src="img/main-logo.jpg">
+				<ul>
+					<li><a href="index.php">Start</a></li>
+					<li><a href="news.php"> Aktualności</a></li>
+					<li><a href="price.php"> Cennik</a></li>
+					<li><a href="contact.php"> Kontakt</a></li>
+				</ul>
+			</nav>
+		</div>
+
+		<div class="content">
+			<div class="inner-content">
+
+				<div class="inner-menu">
+					<div class="head">
+						<h1>Menu</h1>
+					</div>
+					<div class="content-menu">
+						<ul>
+							<li><a href="konto.php">Profil</a></li>
+							<li><a href="">Ustawienia Konta</a></li>
+							<li><a href="basket.php">Koszyk</a></li>
+							<li><a href="index.php?logout">Wyloguj</a></li>
+						</ul>
+						<img id="main-logo" src="img/main-logo.jpg">
+					</div>
+				</div>
+
+				<div class="inner-user">
+					<div class="head">
+						<h1>Koszyk</h1>
+					</div>
+					<div class="content-user">
+						<div id="basket-menu">
+							<p id="info">Co chcesz kupić?</p>
+							<ul>
+								<li><a href="pass.php">Karnet</href></a></li>
+								<li><a href="ticket.php">Bilet</href></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="footer">
+			<p>wszelkie prawa zastrzeżone</p>
+		</div>
+	</div>
+</body>
+
+</html>

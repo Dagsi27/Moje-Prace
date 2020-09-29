@@ -1,0 +1,111 @@
+.inner-content{
+	width:800px;
+	height:500px;
+	padding:0px;
+	background-color:transparent;
+	box-shadow: none;
+}
+
+.inner-menu{
+	clear:none;
+	float:left;
+	background-color:white;
+	width:240px;
+	height:100%;
+	box-shadow: 2px 4px 7px 0px;
+	border-radius:10px 0px 0px 10px;
+}
+
+.inner-menu .head{
+
+	text-align: center;
+	height:13%;
+	margin:0 auto;
+	
+}
+
+.inner-user{
+	float:right;
+	background-color:white;
+	width:550px;
+	height:100%;
+	box-shadow: 2px 4px 7px 0px;
+	border-radius:0px 10px 10px 0px;
+}
+
+.inner-user .head{
+	border-bottom:1px solid;
+	text-align: center;
+	height:13%;
+	width:80%;
+	margin:0 auto;
+	
+}
+
+.content-menu > ul{
+	list-style-type:none;
+	margin:0;
+	padding: 0;
+}
+
+.content-menu > ul a{
+	color:black;
+	text-decoration:none;
+	display:block;
+	padding: 20px 0px;
+}
+
+.content-menu > ul > li{
+	margin:0 20px 0px 20px;
+	text-align:center;
+	border-bottom:1px solid;
+	transition: background-color .5s ease-in-out,box-shadow .5s ease-in-out;
+	
+}
+
+.content-menu > ul > li:nth-child(1){
+	border-top:1px solid;
+}
+
+
+.content-menu > ul > li:hover{
+	background-color:#cbe7ff;
+	box-shadow: inset 0px 0px 2px 0px;
+}
+.content-menu #main-logo{
+	display: block;
+    height: 150%;
+    width: 50%;
+    margin: 11px auto 11px auto;
+}
+
+
+.content-user{
+	margin: 20px 30px;
+	font-size:18px;
+	overflow: hidden;
+}
+
+/* -------------------- user information ------------------*/
+
+#user-information{
+	text-align:left;
+	width:100%;
+}
+
+#user-information th{
+	text-align:center;
+	font-size:22px;
+	padding:5px 0 20px 0;
+}
+
+#user-information td{
+	overflow: hidden;
+	padding:5px 0;
+}
+
+#user-information td:nth-child(1){
+	width:100px;
+}
+
+/* -------------------- user information ------------------*/

@@ -1,0 +1,25 @@
+<?php
+	session_start();
+	require_once 'database.php';
+
+	$login=filter_input(INPUT_POST,'login');
+	$password=filter_input(INPUT_POST,'pass');
+	
+	$userQuery=$db->prepare('SELECT Konto_ID,Haslo FROM konto where Login=:login');
+	$userQuery->bindValue(':login',$login,PDO::PARAM_STR);
+	$userQuery->execute();
+		
+	$user = $userQuery->fetch();
+	if($user && password_verify($password,$user['Haslo'])){
+		$_SESSION['logged_ID']=$user['Konto_ID'];
+		header('Location: index.php');
+		exit(0);
+	}
+	else
+	{
+		$_SESSION['error']="Adres e-mail lub hasło zostało błędnie podane!";	
+		header('Location: login.php');
+		exit(0);
+	}
+	
+?>

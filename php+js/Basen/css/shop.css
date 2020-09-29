@@ -1,0 +1,41 @@
+#user-add input[type=button] {
+	float: right;
+}
+
+#user-add table {
+	width: 100%;
+	font-size: 14px;
+}
+
+#user-add th {
+	background-color: #2581d8;
+	border: 1px solid #225471;
+	border-radius: 3px;
+	color: #1d1d1d;
+}
+
+#user-add td {
+	background-color: #f0feff;
+	border: 1px solid #225471;
+	border-radius: 3px;
+	padding: 1px;
+}
+
+#user-add tr input[type=number] {
+	width: 30px;
+}
+
+#user-add tr input[type=date] {
+	width: 123px;
+}
+
+.dynamic-background {
+	overflow: auto;
+	margin-top: 20px;
+	min-height: 200px;
+	max-height: 200px;
+}
+
+/* #dynamic_field {} */
+
+/* #dynamic_field tr {} */

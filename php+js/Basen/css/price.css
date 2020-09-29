@@ -1,0 +1,47 @@
+.content {
+    height: 120vw;
+}
+
+h1 {
+    text-align: center;
+}
+
+p {
+    padding: 5px 200px;
+}
+
+.tg {
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-color: #9ABAD9;
+    table-layout: fixed;
+    width: 70vw;
+    margin: auto;
+    height: 25vw;
+    text-align: center;
+    font-size: 24px;
+    overflow: hidden;
+}
+
+.tg td {
+    padding: 10px 5px;
+    border-style: solid;
+    border-width: 1px;
+
+    word-break: normal;
+    border-color: #9ABAD9;
+    color: #444;
+    background-color: #EBF5FF;
+}
+
+.tg th {
+    font-weight: normal;
+    padding: 10px 5px;
+    border-style: solid;
+    border-width: 1px;
+
+    word-break: normal;
+    border-color: #9ABAD9;
+    color: #fff;
+    background-color: #2581d8;
+}

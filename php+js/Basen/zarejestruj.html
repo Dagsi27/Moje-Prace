@@ -1,0 +1,98 @@
+<?php
+session_start();
+if(isset($_SESSION['logged_ID']))
+{
+	header('Location: index.php');
+	exit(0);
+}
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Kwa Kwa</title>
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/form.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+
+<body>
+	<div class="container">
+		<div class="header">
+			<div class="top-nav">
+				<ul>
+					<li><a href="login.php"> Zaloguj</a></li>
+					<li><a href="zarejestruj.php"> Zarejestruj</a></li>
+				</ul>
+			</div>
+			<nav class="main-nav">
+				<img id="main-logo" src="img/main-logo.jpg">
+				<ul>
+					<li><a href="index.php">Start</a></li>
+					<li><a href="#"> Aktualności</a></li>
+					<li><a href="#"> Cennik</a></li>
+					<li><a href="#"> Kontakt</a></li>
+				</ul>
+			</nav>
+		</div>
+
+		<div class="content">
+			<div class="inner-content">
+				<div class="head">
+					<h1> Rejestracja </h1>
+				</div>
+				<div class="register">
+
+					<form method="post" action="wynik.php">
+						Adres E-mail:
+						<label>
+							<input type="text" name="login">
+							<?php 
+							if(isset($_SESSION['error'][0]))
+								echo "<div id='error'>".$_SESSION['error'][0]."</div>";
+						?>
+						</label>
+						Hasło:
+						<label>
+							<input type="password" name="pass">
+							<?php 
+							if(isset($_SESSION['error'][1]))
+								echo "<div id='error'>".$_SESSION['error'][1]."</div>";
+						?>
+						</label>
+						Powtórz Hasło:
+						<label>
+							<input type="password" name="pass2">
+							<?php 
+							if(isset($_SESSION['error'][2]))
+								echo "<div id='error'>".$_SESSION['error'][2]."</div>";
+						?>
+						</label>
+						<div class="g-recaptcha" data-sitekey="6LfUxMoUAAAAAMxQfQyJlll9jtUblrGA14mjqm37"></div>
+						<?php
+							if(isset($_SESSION['error'][3]))
+								echo "<div id='error'>".$_SESSION['error'][3]."</div>";
+						?>
+						<input type="submit" value="Zarejęstruj się">
+						<?php
+							if(isset($_SESSION['error']))
+								unset($_SESSION['error']);
+						?>
+
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<footer class="footer">
+			<p>wszelkie prawa zastrzeżone</p>
+		</footer>
+	</div>
+</body>
+
+</html>

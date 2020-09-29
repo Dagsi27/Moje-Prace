@@ -1,0 +1,81 @@
+<?php
+session_start();
+if(!isset($_SESSION['logged_ID']))
+{
+	header('Location: index.php');
+	exit(0);
+}
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kwa Kwa</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/news.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="top-nav">
+                <ul>
+                    <?php 
+					if(!isset($_SESSION['logged_ID'])){
+						echo'<li><a href="login.php">Zaloguj</a></li>';
+						echo'<li><a href="zarejestruj.php">Zarejestruj</a></li>';
+					}
+					else
+					{
+						echo'<li><a href="konto.php">Profil</a></li>';
+						echo'<li><a href="index.php?logout">Wyloguj</a></li>';
+					}?>
+                </ul>
+            </div>
+            <nav class="main-nav">
+                <img id="main-logo" src="img/main-logo.jpg">
+                <ul>
+                    <li><a href="index.php">Start</a></li>
+                    <li><a href="news.php"> Aktualności</a></li>
+                    <li><a href="price.php"> Cennik</a></li>
+                    <li><a href="contact.php"> Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="content">
+            <h1>Serdecznie zapraszamy</h1>
+            <div class="inner-content">
+                Informacje na temat obłożenia na pływalni można uzyskać
+                w Punkcie Obsługi Klienta pod nr. tel. <b> 89 524 61 31.
+                    SERDECZNIE ZAPRASZAMY</b>
+            </div>
+            <h1>Godziny otwarcia w okresie świątecznym</h1>
+            <div class="inner-content">
+                Szanowni Klienci, w okresie świątecznym zapraszamy na pływalnię według następującego harmonogramu:
+                <b>24.12.2019 </b>w godz.9.00 – 14.00 <b>25.12.2019</b> nieczynne <b>26.12.2019</b> w godz. 10.00 -21.00 <b>27.12.2019</b> w godz.
+                9.00 -21.00 <b>28-29.12.2019</b> w godz. 10.00 -21.00 <b>30.12.2019 </b>w godz.9.00 -21.00 <b>31.12.2019</b> w godz.9.00
+                -16.00 <b>01.01.2020 </b>w godz. 15.00 -21.00
+            </div>
+            <h1>Mikołajki 2019</h1>
+            <div class="inner-content">
+                Szanowni Klienci, w piątek <b>06.12.2019 r.</b> zapraszamy na pływalnię wszystkie dzieci. Wstęp wolny
+                dla
+                dzieci i młodzieży do 18 roku życia. Dla każdego dziecka miły uśmiech i słodki upominek 🙂
+            </div>
+            <h1>Oferta pracy</h1>
+            <div class="inner-content">
+                <b>OFERTA PRACY: STANOWISKO Recepcjonista </b>Miejsce pracy: Aquapark “Kwa Kwa” Czarna Góra Wymagania:
+                pracowitość, sumienność. Mile widziana książeczka zdrowia dla celów sanitarno-epidemiologicznych. nr
+                tel. do kontaktu: 74 866 45 02 w godz.9.00-15.00”
+            </div>
+            <div class="footer">
+                <p>wszelkie prawa zastrzeżone</p>
+            </div>
+        </div>
+</body>
+
+</html>
