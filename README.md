@@ -3,4 +3,4 @@
    - Nauka vue.js oraz przypomnienie Laravel
 2. Studia:
    - Wybrane Projekty C++
-   - Strona "Basen" pisanym czystym JS i PHP oraz wykorzystałem tam Bibliotekę PDO
+   - Strona "Basen" napisana w czystym JS i PHP oraz z wykorzystaniem Biblioteki PDO
